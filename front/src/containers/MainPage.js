@@ -3,7 +3,7 @@ import './MainPage.scss'
 import Header from '../components/Header'
 
 export default function MainPage() {
-  const [text, setText] = useState('Hello word')
+  const [text, setText] = useState('Hello world')
   return (
     <div className="main-page">
       <Header/>
