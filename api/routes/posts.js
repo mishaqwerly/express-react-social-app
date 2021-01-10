@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
+const db = require('../services/db')
 
 router.get('/', function(req, res) {
-  res.send('get posts');
+  db.select().from('goods').then(
+    data => { 
+        res.send(data); 
+    }
+  );
 });
 
 router.get('/:id', function(req, res) {
