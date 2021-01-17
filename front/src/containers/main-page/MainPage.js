@@ -4,32 +4,25 @@ import Header from '../../components/header/Header'
 import Articles from '../../components/articles/Articles'
 import AddArticles from '../../components/add-articles/AddArticles'
 import Profile from '../../components/profile/Profile'
+import {articlesComponentName, addArticlesComponentName, profileComponentName} from '../../shared/componentsName'
 
 export default function MainPage() {
   const [activeComponentName, setActiveComponentName] = useState('Articles')
   const [userInfo, setUserInfo] = useState('')
 
-  function HandleChangeComponentName(name) {
-    setActiveComponentName(name)
-  }
-
-  function HandleChangeUserInfo(data) {
-    setUserInfo(data)
-  }
-
   let currentComponent
  
-  if (activeComponentName === 'Articles') {
+  if (activeComponentName === articlesComponentName) {
     currentComponent = <Articles/>
-  } else if (activeComponentName === 'Add articles') {
+  } else if (activeComponentName === addArticlesComponentName) {
     currentComponent = <AddArticles/>
-  } else if (activeComponentName === 'Profile') {
-    currentComponent = <Profile onHandleChangeUserInfo={HandleChangeUserInfo}/>
+  } else if (activeComponentName === profileComponentName) {
+    currentComponent = <Profile onHandleChangeUserInfo={(value) => setUserInfo(value)}/>
   }
 
   return (
     <div className="main-page">
-      <Header onHandleChange={HandleChangeComponentName} userInfo={userInfo}/>
+      <Header onHandleChange={(value) => (setActiveComponentName(value))} userInfo={userInfo}/>
       {currentComponent}
     </div>
   )

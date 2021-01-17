@@ -6,8 +6,10 @@ export default function Profile({onHandleChangeUserInfo}) {
   function handleSubmit(event) {
     event.preventDefault();
     let userInfo = ''
-    if (event.target[0].value.trim() && event.target[1].value.trim()) {
-      userInfo = `(${event.target[0].value.trim()} ${event.target[1].value.trim()})`
+    let userName = event.target[0].value.trim();
+    let userSurname = event.target[1].value.trim();
+    if (userName && userSurname) {
+      userInfo = `(${userName} ${userSurname})`
     }
     onHandleChangeUserInfo(userInfo)
     event.target[0].value = ''
