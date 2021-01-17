@@ -1,0 +1,10 @@
+.form {
+  margin: 15px;
+  margin-top: 20px;
+  &__input {
+    margin-bottom: 10px;
+  }
+  &__input-title {
+    font-size: 12px;
+  }
+}

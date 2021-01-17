@@ -6,36 +6,30 @@ import AddArticles from '../../components/add-articles/AddArticles'
 import Profile from '../../components/profile/Profile'
 
 export default function MainPage() {
-  const [componentName, setComponentName] = useState('Articles')
+  const [activeComponentName, setActiveComponentName] = useState('Articles')
+  const [userInfo, setUserInfo] = useState('')
 
-  const components = [
-    {
-      name: 'Articles'
-    },
-    {
-      name: 'Add article'
-    },
-    {
-      name: 'Profile'
-    },
-  ]
-  
   function HandleChangeComponentName(name) {
-    setComponentName(name)
+    setActiveComponentName(name)
   }
 
-  let currentComponent;
-  if (componentName === 'Articles') {
+  function HandleChangeUserInfo(data) {
+    setUserInfo(data)
+  }
+
+  let currentComponent
+ 
+  if (activeComponentName === 'Articles') {
     currentComponent = <Articles/>
-  } else if (componentName === 'Add article') {
+  } else if (activeComponentName === 'Add articles') {
     currentComponent = <AddArticles/>
-  } else if (componentName === 'Profile') {
-    currentComponent = <Profile/>
+  } else if (activeComponentName === 'Profile') {
+    currentComponent = <Profile onHandleChangeUserInfo={HandleChangeUserInfo}/>
   }
 
   return (
     <div className="main-page">
-      <Header onHandleChange={HandleChangeComponentName}/>
+      <Header onHandleChange={HandleChangeComponentName} userInfo={userInfo}/>
       {currentComponent}
     </div>
   )

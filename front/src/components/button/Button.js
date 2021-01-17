@@ -1,13 +1,13 @@
 import React from 'react'
 import './Button.scss'
 
-export default function Button({text, onHandleClick}) {
+export default function Button({componentName,btnText, onHandleClick}) {
   function handleClick() {
-    onHandleClick(text)
+    onHandleClick(componentName)
   }
   return (
     <div className="button" onClick={handleClick}>
-      {text}
+      {btnText}
     </div>
   )
 }

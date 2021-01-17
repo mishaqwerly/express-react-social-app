@@ -5,7 +5,7 @@ import './AddArticles.scss'
 export default function AddArticles() {
   return (
     <div className="add-articles">
-      AddArticles
+      Add articles
     </div>
   )
 }
