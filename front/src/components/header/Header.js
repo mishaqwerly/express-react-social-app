@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import './Header.scss'
 import Button from '../button/Button'
 import Logo from '../logo/Logo'
 
-export default function Header({onHandleChange, userInfo}) {
+function Header({onHandleChange, userInfo}) {
 
   function handleChangeValue(value) {
     onHandleChange(value)
@@ -20,3 +21,14 @@ export default function Header({onHandleChange, userInfo}) {
     </div>
   )
 }
+
+Header.propTypes = {
+  onHandleChange: PropTypes.func.isRequired,
+  userInfo: PropTypes.string,
+};
+
+Header.defaultProps = {
+  userInfo: null,
+};
+
+export default Header;
