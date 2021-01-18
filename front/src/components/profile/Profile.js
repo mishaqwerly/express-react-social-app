@@ -1,7 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+import userDataType from '../../shared/models/userDataType'
 import './Profile.scss'
 
-export default function Profile({onHandleChangeUserInfo}) {
+function Profile({onHandleChangeUserInfo, userData}) {
   
   function handleSubmit(event) {
     event.preventDefault();
@@ -33,3 +35,10 @@ export default function Profile({onHandleChangeUserInfo}) {
     </div>
   )
 }
+
+Profile.propTypes = {
+  onHandleChangeUserInfo: PropTypes.func.isRequired,
+  userData: userDataType
+};
+
+export default Profile;
