@@ -1,29 +1,12 @@
 var express = require('express');
 var router = express.Router();
-const db = require('../services/db')
+const postController = require("../controllers/postController");
+const passport = require('passport');
 
-router.get('/', function(req, res) {
-  db.select().from('goods').then(
-    data => { 
-        res.send(data); 
-    }
-  );
-});
-
-router.get('/:id', function(req, res) {
-  res.send('get posts by id');
-});
-
-router.post('/', function(req, res) {
-  res.send('create posts');
-});
-
-router.put('/:id', function(req, res) {
-  res.send('update posts');
-});
-
-router.delete('/:id', function(req, res) {
-  res.send('delete posts');
-});
+router.get("/",passport.authenticate('jwt', {session: false} ), postController.getPosts);
+router.get('/:id', postController.getPostsById);
+router.post('/', postController.addPost)
+router.put('/:id', postController.updatePost)
+router.delete('/:id', postController.deletePost)
 
 module.exports = router;

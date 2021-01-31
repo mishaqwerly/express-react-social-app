@@ -1,19 +1,24 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 require("dotenv").config();
 const port = process.env.PORT;
 const app = express()
 const posts = require('./routes/posts');
+const auth = require('./routes/auth');
+const passport = require('passport')
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+app.use(passport.initialize())
+require('./middleware/passport')(passport)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
 app.use('/posts', posts);
-
-app.use(function(request, response, next){
-  console.log("Middleware 1");
-  next();
-});
+app.use('/auth', auth);
 
 app.use((req, res) => {
   res.status(404).send('404');
