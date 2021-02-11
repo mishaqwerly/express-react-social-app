@@ -4,26 +4,20 @@ import './Header.scss'
 import Button from '../button/Button'
 import Logo from '../logo/Logo'
 
-function Header({onHandleChange, userInfo}) {
-
-  function handleChangeValue(value) {
-    onHandleChange(value)
-  }
-
+function Header({userInfo}) {
   return (
     <div className="header">
       <Logo/>
       <div className="header__left">
-        <Button componentName="Articles" btnText="Articles" onHandleClick={handleChangeValue}/>
-        <Button componentName="Add articles" btnText="Add articles" onHandleClick={handleChangeValue}/>
-        <Button componentName="Profile" btnText={`Profile ${userInfo}`} onHandleClick={handleChangeValue}/>
+        <Button link="/" btnText="Articles"/>
+        <Button link="/add-articles" btnText="Add articles"/>
+        <Button link="/profile" btnText={`Profile ${userInfo}`}/>
       </div>
     </div>
   )
 }
 
 Header.propTypes = {
-  onHandleChange: PropTypes.func.isRequired,
   userInfo: PropTypes.string,
 };
 

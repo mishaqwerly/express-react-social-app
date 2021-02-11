@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
-import './MainPage.scss'
+import './MainLayout.scss'
 import Header from '../../components/header/Header'
 import Articles from '../../components/articles/Articles'
 import AddArticles from '../../components/add-articles/AddArticles'
 import Profile from '../../components/profile/Profile'
-import {articlesComponentName, addArticlesComponentName, profileComponentName} from '../../shared/variables/componentsName'
+import NotFound from '../../components/not-found-page/NotFound'
+import {Route, Switch} from "react-router-dom";
 
-export default function MainPage() {
-  const [activeComponentName, setActiveComponentName] = useState('Articles')
+export default function MainLayout() {
   const [userInfo, setUserInfo] = useState('')
 
   const userData = {
@@ -38,20 +38,17 @@ export default function MainPage() {
     }]
   };
 
-  let currentComponent
- 
-  if (activeComponentName === articlesComponentName) {
-    currentComponent = <Articles />
-  } else if (activeComponentName === addArticlesComponentName) {
-    currentComponent = <AddArticles/>
-  } else if (activeComponentName === profileComponentName) {
-    currentComponent = <Profile onHandleChangeUserInfo={(value) => setUserInfo(value)} userData={userData}/>
-  }
-
   return (
     <div className="main-page">
-      <Header onHandleChange={(value) => (setActiveComponentName(value))} userInfo={userInfo}/>
-      {currentComponent}
+      <Header userInfo={userInfo}/>
+      <Switch>
+        <Route exact path="/" component={ Articles }/>
+        <Route exact path="/add-articles" component={ AddArticles }/>
+        <Route exact path="/profile">
+          <Profile onHandleChangeUserInfo={(value) => setUserInfo(value)} userData={userData}/>
+        </Route>
+        <Route exact path="*" component={ NotFound }/>
+      </Switch>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import './AddArticles.scss'
 
 export default function AddArticles() {
   return (
-    <div className="add-articles">
+    <div className="add-articles page">
       Add articles
     </div>
   )

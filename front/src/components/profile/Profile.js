@@ -19,7 +19,7 @@ function Profile({onHandleChangeUserInfo, userData}) {
   }
 
   return (
-    <div className="profile">
+    <div className="profile page">
       Profile
       <form onSubmit={handleSubmit} className="form">
         <div className="form__input">
