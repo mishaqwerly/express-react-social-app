@@ -2,18 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import './Button.scss'
 
-function Button({componentName, btnText, onHandleClick}) {  
+import {Link} from "react-router-dom";
+
+function Button({link, btnText}) {  
   return (
-    <div className="button" onClick={() => onHandleClick(componentName)}>
-      {btnText}
-    </div>
+    <Link to={link}>
+      <div className="button">
+        {btnText}
+      </div>
+    </Link>
   )
 }
 
 Button.propTypes = {
-  componentName: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
   btnText: PropTypes.string.isRequired,
-  onHandleClick: PropTypes.func.isRequired,
 };
 
 export default Button;

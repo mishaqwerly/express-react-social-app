@@ -1,12 +1,12 @@
 import './App.scss'
-import MainPage from './containers/main-page/MainPage'
+import MainLayout from './containers/main-layout/MainLayout'
 import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
 
 function App() {
   return (
     <div className="App">
       <ErrorBoundary>
-        <MainPage/>
+        <MainLayout/>
       </ErrorBoundary>
     </div>
   );
