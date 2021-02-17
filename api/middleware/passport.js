@@ -47,13 +47,18 @@ passport.use(new GoogleStrategy({
     clientSecret: "-U3vvtmABHf_OBKqHwoYX4aR",
     callbackURL: "http://localhost:3000/google/callback"
   },
-  function(accessToken, refreshToken, profile, done) {
+  async function(accessToken, refreshToken, profile, done) {
+
+    // console.log(req.user.id)
+    // console.log(req.user.displayName)
+    //console.log(req.user.emails[0].value)
+    
     /*
      use the profile info (mainly profile id) to check if the user is registerd in ur db
      If yes select the user and pass him to the done callback
      If not create the user and then select him and pass to callback
     */
-    console.log(profile)
+    //console.log(profile)
     return done(null, profile);
   }
 ));

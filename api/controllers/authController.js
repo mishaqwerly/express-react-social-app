@@ -55,8 +55,3 @@ exports.register = async function (req, res){
     }
   }
 };
-
-exports.regustrationGoogle = async function (req, res){
-  res.send(`regustrationGoogle`);
-}
-
