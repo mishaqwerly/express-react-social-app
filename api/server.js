@@ -6,9 +6,11 @@ const app = express()
 const posts = require('./routes/posts');
 const auth = require('./routes/auth');
 const passport = require('passport')
+var cors = require('cors');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(cors());
 
 app.use(passport.initialize())
 require('./middleware/passport')(passport)

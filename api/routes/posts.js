@@ -10,13 +10,8 @@ const authenticate = (req, res, next) => {
   })(req, res, next);
 };
 
-<<<<<<< HEAD
-//router.get("/",passport.authenticate('jwt', {session: false} ), postController.getPosts);
-router.get("/", postController.getPosts);
-=======
 router.get("/",[authenticate], postController.getAllPosts);
 // router.get("/", postController.getAllPosts);
->>>>>>> master
 router.get('/:id', postController.getPostsById);
 router.post('/',[authenticate], postController.createNewPost)
 router.put('/:id',[authenticate, checkAuthorized('posts', 'user_id')], postController.updatePost)

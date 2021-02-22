@@ -6,10 +6,10 @@ function Post({content}) {
   return (
     <div className="post">
       <div className="post__name">
-        Ivan
+        User - {content.user_id}
       </div>
       <div className="post__text">
-      Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни 45 года н.э.,
+        {content.text}
       </div>
       <div className="post__date">01:02:2021</div>
     </div>
@@ -17,7 +17,11 @@ function Post({content}) {
 }
 
 Post.propTypes = {
-  content: PropTypes.object,
+  content: PropTypes.shape({
+    id: PropTypes.number,
+    user_id: PropTypes.number,
+    text: PropTypes.string,
+  }),
 };
 
 export default Post;

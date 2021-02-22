@@ -10,7 +10,7 @@ function Articles() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await apiClient.get("/");
+      const response = await apiClient.get("/posts");
       console.log(response.data)
       setPosts(response.data);
     }
