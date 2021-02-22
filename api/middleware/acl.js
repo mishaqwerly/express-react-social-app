@@ -3,15 +3,9 @@ const jwt_decode = require('jwt-decode')
 
 function checkAuthorized(tableName, cellName){
   return async function (req, res, next){
-    const token = req.headers.authorization.split(' ')[1]
-    if (!token) {
-      return res.status(400).send('Access denied. You are not authorized')
-    }
-    const decoded = jwt_decode(token);
-    const userId = decoded.userId;
-    const isAuthor = await db.select().from(tableName).where(cellName, userId).first();
-    console.log(isAuthor)
-    if (isAuthor) {
+    const userId = req.user._statements[1].value;
+    const item = await db.select().from(tableName).where('id', req.params.id).first();
+    if (item && item[cellName] === userId) {
       console.log("you heve permissions")
       next();
     } else {
