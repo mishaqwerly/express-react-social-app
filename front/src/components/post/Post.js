@@ -1,7 +1,8 @@
 import React from 'react'
 import './Post.scss'
+import PropTypes from 'prop-types';
 
-function Post() {
+function Post({content}) {
   return (
     <div className="post">
       <div className="post__name">
@@ -14,5 +15,9 @@ function Post() {
     </div>
   )
 }
+
+Post.propTypes = {
+  content: PropTypes.object,
+};
 
 export default Post;

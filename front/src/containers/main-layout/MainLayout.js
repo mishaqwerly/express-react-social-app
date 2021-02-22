@@ -42,7 +42,9 @@ export default function MainLayout() {
     <div className="main-page">
       <Header userInfo={userInfo}/>
       <Switch>
-        <Route exact path="/" component={ Articles }/>
+        <Route exact path="/">
+          <Articles/>
+        </Route>
         <Route exact path="/add-articles" component={ AddArticles }/>
         <Route exact path="/profile">
           <Profile onHandleChangeUserInfo={(value) => setUserInfo(value)} userData={userData}/>
