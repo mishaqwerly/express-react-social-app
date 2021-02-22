@@ -4,7 +4,7 @@ const postController = require("../controllers/postController");
 const passport = require('passport');
 const {checkAuthorized} = require("../middleware/acl");
 const authenticate = (req, res, next) => {
-  passport.authenticate("jwt", { session: false }, async (err, user) => {
+  passport.authenticate("jwt", { session: false }, async (err, user, trace) => {
     req.user = user;
     next();
   })(req, res, next);
