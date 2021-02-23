@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './MainLayout.scss'
 import Header from '../../components/header/Header'
-import Articles from '../../components/articles/Articles'
+import Articles from '../articles/Articles'
 import AddArticles from '../../components/add-articles/AddArticles'
 import Profile from '../../components/profile/Profile'
 import NotFound from '../../components/not-found-page/NotFound'

@@ -3,7 +3,7 @@ import './Articles.scss'
 import {apiClient} from "../../config/axios";
 import {useState, useEffect} from 'react'
 
-import Post from '../post/Post'
+import Post from '../../components/post/Post'
 
 function Articles() {
   const [posts, setPosts] = useState([]);
@@ -11,7 +11,6 @@ function Articles() {
   useEffect(() => {
     async function fetchData() {
       const response = await apiClient.get("/posts");
-      console.log(response.data)
       setPosts(response.data);
     }
     fetchData();
