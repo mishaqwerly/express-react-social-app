@@ -8,9 +8,11 @@ const auth = require('./routes/auth');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 require('./middleware/passport')(passport)
+var cors = require('cors');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(cors());
 
 app.use(cookieSession({
   name: 'session',

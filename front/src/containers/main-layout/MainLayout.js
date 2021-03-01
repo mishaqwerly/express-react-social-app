@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './MainLayout.scss'
 import Header from '../../components/header/Header'
-import Articles from '../../components/articles/Articles'
+import Articles from '../articles/Articles'
 import AddArticles from '../../components/add-articles/AddArticles'
 import Profile from '../../components/profile/Profile'
 import NotFound from '../../components/not-found-page/NotFound'
@@ -42,7 +42,9 @@ export default function MainLayout() {
     <div className="main-page">
       <Header userInfo={userInfo}/>
       <Switch>
-        <Route exact path="/" component={ Articles }/>
+        <Route exact path="/">
+          <Articles/>
+        </Route>
         <Route exact path="/add-articles" component={ AddArticles }/>
         <Route exact path="/profile">
           <Profile onHandleChangeUserInfo={(value) => setUserInfo(value)} userData={userData}/>
