@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './MainLayout.scss'
 import Header from '../../components/header/Header'
 import Articles from '../articles/Articles'
-import AddArticles from '../../components/add-articles/AddArticles'
+import ArticleForm from '../article-form/ArticleForm'
 import Profile from '../../components/profile/Profile'
 import NotFound from '../../components/not-found-page/NotFound'
 import {Route, Switch} from "react-router-dom";
@@ -45,7 +45,10 @@ export default function MainLayout() {
         <Route exact path="/">
           <Articles/>
         </Route>
-        <Route exact path="/add-articles" component={ AddArticles }/>
+        <Route exact path="/add-articles" component={ ArticleForm }/>
+        <Route exact path="/edit-article/:id">
+          <ArticleForm isEdit={true}/>
+        </Route>
         <Route exact path="/profile">
           <Profile onHandleChangeUserInfo={(value) => setUserInfo(value)} userData={userData}/>
         </Route>

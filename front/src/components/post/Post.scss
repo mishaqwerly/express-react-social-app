@@ -16,4 +16,16 @@
   &__date{
     font-size: 10px;
   }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__btn {
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #FFF;
+    background-color: rgb(74, 143, 189);
+    cursor: pointer;
+  }
 }
