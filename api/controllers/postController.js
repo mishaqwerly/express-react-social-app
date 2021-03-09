@@ -3,11 +3,15 @@ const db = require('../services/db')
 exports.createNewPost = async function (req, res){
   const text = req.body.text
   const userId = req.body.userId
+  const title = req.body.title
+  const available = req.body.available
   try {
     await db('posts')
     .insert({
       user_id: userId,
       text: text,
+      title: title,
+      available: available,
     });
     res.send("Добавлен новый пост");
   } catch (error) {
@@ -38,6 +42,8 @@ exports.updatePost = async function (req, res){
   const id = req.params.id
   const text = req.body.text
   const userId = req.body.userId
+  const title = req.body.title
+  const available = req.body.available
   console.log(req.body.text)
   try {
     await db('posts')
@@ -45,6 +51,8 @@ exports.updatePost = async function (req, res){
     .update({
       user_id: userId,
       text: text,
+      title: title,
+      available: available,
     });
     res.send(`update post - ${id}`);
   } catch (error) {

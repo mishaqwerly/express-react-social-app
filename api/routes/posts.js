@@ -13,7 +13,8 @@ const authenticate = (req, res, next) => {
 router.get("/",[authenticate], postController.getAllPosts);
 // router.get("/", postController.getAllPosts);
 router.get('/:id', postController.getPostsById);
-router.post('/',[authenticate], postController.createNewPost)
+//router.post('/',[authenticate], postController.createNewPost)
+router.post('/', postController.createNewPost)
 router.put('/:id',[authenticate, checkAuthorized('posts', 'user_id')], postController.updatePost)
 router.delete('/:id',[authenticate,checkAuthorized('posts', 'user_id')], postController.deletePost)
 
