@@ -18,7 +18,7 @@ router.post('/register',
 router.put('/users/:id',
   validator({
     name: ['required','min:5','max:100'],
-    email: ['required', 'email', 'unique:users:email:isUpdate'],
+    email: ['required', 'email', 'unique:users:email:isUpdate:user_id'],
     password: ['required', 'min:5', 'max:10'],
   }), 
   authController.editUser);
