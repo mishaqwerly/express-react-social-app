@@ -2,8 +2,8 @@ const db = require('../services/db')
 module.exports = function validator(validatorSchema) {
   return async (req, res, next) => {
     const errors = []
-    Object.entries(validatorSchema).forEach(([fieldName, rules]) => {
-      rules.forEach((rule) => {
+    for ([fieldName, rules] of Object.entries(validatorSchema)) {
+      for (rule of rules) {
         const [ruleName, ...params] = rule.split(':')
         switch (ruleName) {
           case 'required':
@@ -43,8 +43,8 @@ module.exports = function validator(validatorSchema) {
             break;
           default:
         }
-      })
-    })
+      }
+    }
     if (!errors.length) {
       return next();
     }
