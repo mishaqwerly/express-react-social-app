@@ -55,3 +55,8 @@ exports.register = async function (req, res){
     }
   }
 };
+
+exports.editUser = async function (req, res){
+  console.log('User data has been updated')
+  res.send("User data has been updated");
+}

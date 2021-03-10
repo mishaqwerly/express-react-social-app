@@ -15,5 +15,11 @@ router.post('/register',
     password: ['required', 'min:5', 'max:10'],
   }), 
   authController.register);
-
+router.put('/users/:id',
+  validator({
+    name: ['required','min:5','max:100'],
+    email: ['required', 'email', 'unique:users:email:isUpdate'],
+    password: ['required', 'min:5', 'max:10'],
+  }), 
+  authController.editUser);
 module.exports = router;
