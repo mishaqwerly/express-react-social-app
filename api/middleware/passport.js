@@ -3,6 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt
 const db = require('../services/db')
 const passport = require('passport');
+require("dotenv").config();
 
 const options = {}
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
@@ -39,8 +40,8 @@ passport.deserializeUser(function(user, done) {
 });
 
 passport.use(new GoogleStrategy({
-    clientID: "117520101071-njkvl5ibb9ruru8ab23n2d1hu05bd4ak.apps.googleusercontent.com",
-    clientSecret: "-U3vvtmABHf_OBKqHwoYX4aR",
+    clientID: process.env.CLIENTID,
+    clientSecret: process.env.CLIENTSECRET,
     callbackURL: "http://localhost:3000/google/callback"
   },
   async function(accessToken, refreshToken, profile, done) {
