@@ -9,5 +9,5 @@ export const createArticle = async (data) => {
 }
 
 export const getArticleById = async (id) => {
-  return apiClient.get(`/posts/${id}`, data);
+  return apiClient.get(`/posts/${id}`);
 }
