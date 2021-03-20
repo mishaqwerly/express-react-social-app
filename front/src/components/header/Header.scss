@@ -1,7 +1,14 @@
 .header {
   padding: 10px;
-  background-color: #484de2;
+  background-color: #3c3c3c;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  &__left {
+    display: flex;
+    align-items: center;
+    div {
+      margin: 5px;
+    }
+  }
 }
