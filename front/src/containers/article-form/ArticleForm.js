@@ -2,9 +2,10 @@ import React from 'react'
 import './ArticleForm.scss'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import {useMutation, useQuery} from 'react-query'
-import {createArticle, getArticleById} from '.././../hooks/ApiArticles';
+import {useMutation} from 'react-query'
+import {createArticle} from '.././../hooks/ApiArticles';
 import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
 
 const ArticlesSchema = Yup.object().shape({
   title: Yup.string()
@@ -49,19 +50,19 @@ export default function AddArticles({isEdit}) {
           >
             {({ isSubmitting }) => (
               <Form>
-                <div>
-                  <div>title</div>
-                  <Field type="text" name="title" />
-                  <ErrorMessage name="title" component="div" className="error" />
+                <div className="input-wrap">
+                    <div className="input-title">Title</div>
+                    <Field className="input" type="text" name="title" />
+                    <ErrorMessage name="title" component="div" className="error" />
                 </div>
-                <div>
-                  <div>text</div>
-                  <Field component="textarea" type="text" name="text" />
+                <div className="input-wrap">
+                  <div className="input-title">Text</div>
+                  <Field className="input" component="textarea" type="text" name="text" />
                   <ErrorMessage name="text" component="div" className="error" />
                 </div>
-                <div>
-                  <div>Available to</div>
-                  <Field
+                <div className="input-wrap">
+                  <div className="input-title">Available to</div>
+                  <Field className="input"
                     name="available" 
                     component="select" 
                     placeholder="Your Gender">   
@@ -71,9 +72,9 @@ export default function AddArticles({isEdit}) {
                       <option value="me">Only Me</option>
                   </Field>
                 </div>
-                <button type="submit" disabled={isSubmitting}>
+                <Button variant="contained" color="secondary" type="submit" disabled={isSubmitting} >
                   Submit
-                </button>
+                </Button>
               </Form>
             )}
           </Formik>

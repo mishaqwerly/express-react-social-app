@@ -2,7 +2,9 @@ import React from 'react'
 import './Post.scss'
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
-function Post({content}) {
+import Button from '@material-ui/core/Button';
+
+function Post({content, hendlersEdit}) {
   return (
     <div className="post">
       <div className="post__name">
@@ -16,9 +18,8 @@ function Post({content}) {
       </div>
       <div className="post__footer">
         <div className="post__date">01:02:2021</div>
-        <Link to={`/edit-article/${content.id}`} className="post__btn">Edit - {content.id}</Link>
+        <Button variant="outlined" color="primary" onClick={() => hendlersEdit(content.id)}>Edit - {content.id}</Button>
       </div>
-      
     </div>
   )
 }

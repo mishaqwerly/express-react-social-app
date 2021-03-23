@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './MainLayout.scss'
 import Header from '../../components/header/Header'
 import Articles from '../articles/Articles'
+import Modal from '../../components/modal/Modal'
 import ArticleForm from '../article-form/ArticleForm'
 import Profile from '../../components/profile/Profile'
 import NotFound from '../../components/not-found-page/NotFound'
@@ -9,6 +10,18 @@ import {Route, Switch} from "react-router-dom";
 
 export default function MainLayout() {
   const [userInfo, setUserInfo] = useState('')
+  const [isOpenModal, setIsOpenModal] = useState(false)
+  const [editPostId, setEditPostId] = useState(null)
+
+  function editPostEvent(id) {
+    setEditPostId(id)
+    setIsOpenModal(true)
+  }
+
+  function closeArticleModal() {
+    setEditPostId(null)
+    setIsOpenModal(false)
+  }
 
   const userData = {
     id: 1,
@@ -40,14 +53,13 @@ export default function MainLayout() {
 
   return (
     <div className="main-page">
-      <Header userInfo={userInfo}/>
+      <Header userInfo={userInfo} handleOpenArticleModal={(value) => setIsOpenModal(value)}/>
+      <Modal isOpen={isOpenModal} onClose={closeArticleModal}>
+        <ArticleForm isEdit={editPostId || false}/>
+      </Modal>
       <Switch>
         <Route exact path="/">
-          <Articles/>
-        </Route>
-        <Route exact path="/add-articles" component={ ArticleForm }/>
-        <Route exact path="/edit-article/:id">
-          <ArticleForm isEdit={true}/>
+          <Articles onEditPost={(id) => editPostEvent(id)}/>
         </Route>
         <Route exact path="/profile">
           <Profile onHandleChangeUserInfo={(value) => setUserInfo(value)} userData={userData}/>
